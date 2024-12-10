@@ -12,8 +12,8 @@ class ParkingWithObstacles(ParkingEnv):
         self.open_walls = False # set the wall around the parking lot
         self.num_obstacles = 3  # Set number of obstacles
         self.num_init_vehocles = 3 # Set number of initial vehicles
-        self.collision_reward = -50 # set collision reward
-        self.success_goal_reward = 100 # set goal reward
+        self.collision_reward = -5 # set collision reward
+        self.success_goal_reward = 0.12 # set goal reward
         self.further_reward = -10 # not yet (may be not needed)
 
         # observation
