@@ -10,11 +10,12 @@ class ParkingWithObstacles(ParkingEnv):
         # Set subclass attributes before initializing the parent class
         self.env = env
         self.open_walls = True # set the wall around the parking lot
-        self.num_obstacles = 3  # Set number of obstacles
-        self.num_init_vehocles = 3 # Set number of initial vehicles
+        self.num_obstacles = 0  # Set number of obstacles
+        self.num_init_vehocles = 0 # Set number of initial vehicles
         self.collision_reward = -5 # set collision reward
         self.success_goal_reward = 0.12 # set goal reward
         self.further_reward = -10 # not yet (may be not needed)
+        self.duration = 50
 
         # observation
         ## type
@@ -73,7 +74,7 @@ class ParkingWithObstacles(ParkingEnv):
             "collision_reward": self.collision_reward,
             "success_goal_reward": self.success_goal_reward,
             "reward_weights": [1, 0.3, 0, 0, 0.02, 0.02],
-            "duration": 100, # The episode is truncated if the time is over. (steps)
+            "duration": self.duration, # The episode is truncated if the time is over. (steps)
         }
 
         # Initialize the parent class
