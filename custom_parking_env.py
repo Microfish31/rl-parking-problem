@@ -9,13 +9,13 @@ class ParkingWithObstacles(ParkingEnv):
     def __init__(self, env):
         # Set subclass attributes before initializing the parent class
         self.env = env
-        self.open_walls = True # set the wall around the parking lot
+        self.open_walls = False # set the wall around the parking lot
         self.num_obstacles = 0  # Set number of obstacles
         self.num_init_vehocles = 0 # Set number of initial vehicles
         self.collision_reward = -5 # set collision reward
         self.success_goal_reward = 0.12 # set goal reward
         self.further_reward = -10 # not yet (may be not needed)
-        self.duration = 50
+        self.duration = 6
 
         # observation
         ## type
@@ -73,7 +73,7 @@ class ParkingWithObstacles(ParkingEnv):
             "controlled_vehicles": 1,
             "collision_reward": self.collision_reward,
             "success_goal_reward": self.success_goal_reward,
-            "reward_weights": [1, 0.3, 0, 0, 0.02, 0.02],
+            "reward_weights": [1, 0.3, 0, 0, 0.9, 0.9],
             "duration": self.duration, # The episode is truncated if the time is over. (steps)
         }
 
@@ -91,9 +91,10 @@ class ParkingWithObstacles(ParkingEnv):
         # Controlled vehicles
         self.controlled_vehicles = []
         for i in range(self.config["controlled_vehicles"]):
-            x0 = (i - self.config["controlled_vehicles"] // 2) * 10
+            x0 = random.uniform(-20,20)
+            y0 = random.uniform(-10,10)
             vehicle = self.action_type.vehicle_class(
-                self.road, [x0, 0], 2 * np.pi * self.np_random.uniform(), 0
+                self.road, [x0, y0], 2 * np.pi * self.np_random.uniform(), 0
             )
             vehicle.color = VehicleGraphics.EGO_COLOR
             self.road.vehicles.append(vehicle)
