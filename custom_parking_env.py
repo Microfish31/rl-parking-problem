@@ -15,7 +15,7 @@ class ParkingWithObstacles(ParkingEnv):
         self.collision_reward = -5 # set collision reward
         self.success_goal_reward = 0.12 # set goal reward
         self.further_reward = -10 # not yet (may be not needed)
-        self.duration = 100
+        self.duration = 30
 
         # observation
         ## type
@@ -73,9 +73,9 @@ class ParkingWithObstacles(ParkingEnv):
             "controlled_vehicles": 1,
             "collision_reward": self.collision_reward,
             "success_goal_reward": self.success_goal_reward,
-            "reward_weights": [1, 0.3, 0, 0, 0.02, 0.02],
+            "reward_weights": [1, 1, 0, 0, 0, 0],
             "duration": self.duration, # The episode is truncated if the time is over. (steps)
-            "simulation_frequency": 50,
+            "simulation_frequency": 15,
         }
 
         # Initialize the parent class
