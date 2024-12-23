@@ -10,7 +10,7 @@ class ParkingWithObstacles(ParkingEnv):
         # Set subclass attributes before initializing the parent class
         self.env = env
         self.open_walls = False # set the wall around the parking lot
-        self.num_obstacles = 0  # Set number of obstacles
+        self.num_obstacles = 3  # Set number of obstacles
         self.num_init_vehocles = 0 # Set number of initial vehicles
         self.collision_reward = -5 # set collision reward
         self.success_goal_reward = 0.12 # set goal reward
