@@ -57,3 +57,4 @@ class DeepQNetwork(nn.Module):
         x = F.relu(self.layer2(x))
         x = F.relu(self.layer3(x))
         return self.layer4(x)
+    

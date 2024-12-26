@@ -10,7 +10,7 @@ class ParkingWithObstacles(ParkingEnv):
         # Set subclass attributes before initializing the parent class
         self.env = env
         self.open_walls = False # set the wall around the parking lot
-        self.num_obstacles = 3  # Set number of obstacles
+        self.num_obstacles = 3  # Set number of obstacles (fixed)
         self.num_init_vehocles = 0 # Set number of initial vehicles
         self.collision_reward = -5 # set collision reward
         self.success_goal_reward = 0.12 # set goal reward
@@ -143,11 +143,14 @@ class ParkingWithObstacles(ParkingEnv):
 
         # Obstacles
         if self.config["add_obstacles"]:
+            px = [-10,0,10]
+            py = [0,5,0]
             for i in range(self.config["obstacles_count"]):
                 lane_index = empty_spots[self.np_random.choice(np.arange(len(empty_spots)))]
                 lane = self.road.network.get_lane(lane_index)
                 position = lane.position(lane.length / 2, 0)
-                position[1] = round(random.uniform(0, position[1]))
+                position[0] = px[i]
+                position[1] = py[i]
                 size = 2  # Set the side length of square obstacles
                 # Create a square obstacle in the center of the map
                 obstacle = Obstacle(self.road, position)  # Place it at the center of the map
