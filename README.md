@@ -20,7 +20,7 @@ The environment consists of a car that needs to find a parking spot within a par
 - **Steering range:** \(-0.5\) to \(0.5\)  
 - **Acceleration range:** \(-0.4\) to \(0.4\)  
 
-To convert continuous actions into discrete actions:  
+To convert continuous actions into discrete actions
 
 |   | **Steering (m)** | **Acceleration (n)** |
 |---|------------------|----------------------|
@@ -28,7 +28,8 @@ To convert continuous actions into discrete actions:
 
 ### Reward Function
 - **Collision penalty:** \(-5\)  
-- **Distance-based reward:** The reward is determined by the distance to the target:
+- **Distance-based reward:**   
+The reward is determined by the distance to the target  
 
 $$ R = -(|a - d| * w)^P $$
 
