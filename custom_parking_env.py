@@ -13,9 +13,9 @@ class ParkingWithObstacles(ParkingEnv):
         self.num_obstacles = 3  # Set number of obstacles (fixed)
         self.num_init_vehocles = 0 # Set number of initial vehicles
         self.collision_reward = -5 # set collision reward
-        self.success_goal_reward = 0.15 # set goal reward
+        self.success_goal_reward = 0.12 # set goal reward
         self.further_reward = -10 # not yet (may be not needed)
-        self.duration = 50
+        self.duration = 30
 
         # observation
         ## type
@@ -143,8 +143,8 @@ class ParkingWithObstacles(ParkingEnv):
 
         # Obstacles
         if self.config["add_obstacles"]:
-            px = [-10,0,10]
-            py = [0,5,0]
+            px = [-15,0,15]
+            py = [0,7,0]
             for i in range(self.config["obstacles_count"]):
                 lane_index = empty_spots[self.np_random.choice(np.arange(len(empty_spots)))]
                 lane = self.road.network.get_lane(lane_index)
