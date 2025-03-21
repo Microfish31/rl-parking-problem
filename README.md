@@ -33,6 +33,9 @@ The reward is determined by the distance to the target
 
 $$ R = -(|a - d| * w)^P $$
 
+### Method
+Q-Learning
+
 ### Neural Network
 * Policy Net
 * Target Net
